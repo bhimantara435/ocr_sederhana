@@ -1,6 +1,6 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <!-- Tambahkan izin kamera di sini -->
+    <!-- izin kamera  -->
     <uses-permission android:name="android.permission.CAMERA" />
 
     <application
