@@ -17,6 +17,9 @@ dependencies:
   path_provider: ^2.1.2
   path: ^1.8.3
 
+  # Tambahan plugin untuk Text-to-Speech (TTS)
+  flutter_tts: ^3.8.5
+
   # Ikon iOS
   cupertino_icons: ^1.0.8
 
