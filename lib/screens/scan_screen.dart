@@ -1,4 +1,3 @@
-
 import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:camera/camera.dart';
@@ -80,17 +79,34 @@ class _ScanScreenState extends State<ScanScreen> {
         MaterialPageRoute(builder: (_) => ResultScreen(ocrText: ocrText)),
       );
     } catch (e) {
+      // Pesan error
       ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text('Error saat ambil gambar: $e')),
+        const SnackBar(
+          content: Text("Pemindaian Gagal! Periksa Izin Kamera atau coba lagi."),
+        ),
       );
     }
   }
 
   @override
   Widget build(BuildContext context) {
-    if (!_isCameraReady || _controller == null) {
-      return const Scaffold(
-        body: Center(child: CircularProgressIndicator()),
+    // 🔹 Custom Loading Screen
+    if (_controller == null || !_controller!.value.isInitialized) {
+      return Scaffold(
+        backgroundColor: Colors.grey[900],
+        body: Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: const [
+              CircularProgressIndicator(color: Colors.yellow),
+              SizedBox(height: 20),
+              Text(
+                'Memuat Kamera... Harap tunggu.',
+                style: TextStyle(color: Colors.white, fontSize: 18),
+              ),
+            ],
+          ),
+        ),
       );
     }
 
